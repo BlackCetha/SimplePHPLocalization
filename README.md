@@ -14,13 +14,13 @@ $loc = new localization(); # Use user-preference
 ```
 Translations are accessable by calling the class as a function.
 ```php
-echo $loc("admin"); # --> Administrator
-echo $loc("homepage") # --> Hauptseite (German)
+$loc("admin"); # --> Administrator
+$loc("homepage") # --> Hauptseite (German)
 ```
 English will be used as fallback if there is no translation.
 ```php
-echo $loc("sloth"); # --> Not defined in german --> Sloth
-echo $loc("homepage"); # --> Hauptseite (doesnt change main language)
+$loc("sloth"); # --> Not defined in german --> Sloth
+$loc("homepage"); # --> Hauptseite (doesnt change main language)
 ```
 It is possible to replace or add translations for once.
 ```php
