@@ -46,7 +46,6 @@ class localization {
             }
         }
         $this->lang = $lang;
-        echo $this->lang." - ".$lang;
     }
     function __invoke ($name) {
         if (isset($this->localeCache[$name]))
@@ -79,14 +78,12 @@ class localization {
         fclose($file);
         return (bool)$result;
     }
-    function exists ($name, $lang = "") {
-        if ($lang == "") $lang = $this->lang;
-        if ($lang == $this->lang)
-            return isset($this->localeCache[$name]);
-        if ($lang == "en")
-            return isset($this->fallbackCache[$name]);
-        $data = json_decode(file_get_contents(__DIR__.DIRECTORY_SEPARATOR."localization.json"), true);
-        return isset($data[$lang][$name]);
+    function exists ($name, $checkInFallback = false) {
+        if (isset($this->localizationCache[$name]))
+            return true;
+        if ($checkInFallback && isset($this->fallbackCache[$name]))
+            return true;
+        return false;
     }
     function place ($name, $localization) {
         $this->localeCache[$name] = $localization;
