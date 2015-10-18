@@ -51,5 +51,5 @@ $loc->removeLocalization($key, $lang (defaults to current));
 
 Check for the existence of a translation with
 ```php
-exists($key, $language (defaults to current));
+exists($key, $checkInCallback (defaults to false));
 ```
