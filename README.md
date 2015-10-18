@@ -44,7 +44,8 @@ The file follows this pattern:
 Translations can also be changed with theese functions.
 They will change the localization for the running script aswell as in the localization file.
 ```php
-$loc->addLocalization($key, $translation, $language (defaults to current)); # This will also override existing translations
+$loc->addLocalization($key, $translation, $language (defaults to current));
+# This will also override existing translations
 $loc->removeLocalization($key, $lang (defaults to current));
 ```
 
