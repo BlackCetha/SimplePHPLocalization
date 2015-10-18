@@ -1,0 +1,14 @@
+{
+    "en": {
+        "isoname": "en-US",
+        "name": "English",
+        "admin": "Administrator",
+        "home": "Homepage"
+    },
+    "de": {
+        "isoname": "de-DE",
+        "name": "Deutsch",
+        "admin": "Administrator",
+        "home": "Hauptseite"
+    }
+}
