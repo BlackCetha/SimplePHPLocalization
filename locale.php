@@ -26,7 +26,9 @@ class localization {
     private $localeCache;
     private $fallbackCache;
     private $lang;
+    private $autoEcho;
     function __construct ($lang = null) {
+        $this->autoEcho = false;
         $data = json_decode(file_get_contents(__DIR__.DIRECTORY_SEPARATOR."localization.json"), true);
         if ($lang == null)
             $lang = substr($_SERVER["HTTP_ACCEPT_LANGUAGE"],0,2);
@@ -48,10 +50,18 @@ class localization {
         $this->lang = $lang;
     }
     function __invoke ($name) {
-        if (isset($this->localeCache[$name]))
+        if (isset($this->localeCache[$name])) {
+            if ($this->autoEcho)
+                echo $this->localeCache[$name];
             return $this->localeCache[$name];
-        if (isset($this->fallbackCache[$name]))
+        }
+        if (isset($this->fallbackCache[$name])) {
+            if ($this->autoEcho)
+                echo $this->fallbackCache[$name];
             return $this->fallbackCache[$name];
+        }
+        if ($this->autoEcho)
+            echo "[TRANSLATION MISSING]";
         return "[TRANSLATION MISSING]";
     }
     function addLocalization ($name, $localization, $lang = "") {
@@ -87,5 +97,10 @@ class localization {
     }
     function place ($name, $localization) {
         $this->localeCache[$name] = $localization;
+    }
+    function setAutoEcho ($val) {
+        if (!is_bool($val)) return false;
+        $this->autoEcho = $val;
+        return true;
     }
 }
