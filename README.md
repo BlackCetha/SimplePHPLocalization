@@ -28,6 +28,10 @@ $loc("homepage"); # --> Hauptseite
 $loc->place("homepage", "Hauptpage");
 $loc("homepage"); # --> Hauptpage # This is only changed for the rest of the script
 ```
+AutoEcho mode can be toggled using
+```php
+$loc->setAutoEcho(true/false);
+```
 
 #Adding or changing translations
 
